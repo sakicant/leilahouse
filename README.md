@@ -28,6 +28,7 @@ src/            source (edit here)
     site.json   phone, email, address, nav, FAQ text
     icons.json  inline SVG icon paths
 assets/
+  img/logo*.svg the logo lockups (generated, committed)
   img/house/    original photos (1920 px)
   img/area/     drone, Krka and Aquapark photos
   img/r/        generated responsive variants — do not edit by hand
@@ -51,6 +52,32 @@ python tools/gen-images.py  # regenerate image variants after adding photos
 
 `gen-images.py` needs Pillow (`pip install pillow`). It skips variants that
 already exist, so re-running it is cheap.
+
+### The logo
+
+`tools/gen-logo.py` draws the gold brush-stroke fish from Bezier centrelines
+offset by a width profile, and sets "House Leila" in Cormorant Garamond Italic
+**as outlines**, so the logo can never render in the wrong font and needs no
+webfont request. It writes four files:
+
+| File | Use |
+|---|---|
+| `assets/img/logo.svg` | horizontal lockup — site header |
+| `assets/img/logo-light.svg` | same, lightened for the dark footer |
+| `assets/img/logo-emblem.svg` | wordmark inside the fish — social, print, signage |
+| `favicon.svg` + `apple-touch-icon.png` | the fish alone on navy, drawn with a heavier stroke so it survives 16 px |
+
+The outputs are committed, so you only need to run the script to change the
+artwork:
+
+```bash
+pip install fonttools brotli uharfbuzz pillow
+python tools/gen-logo.py
+```
+
+It expects `.build/cormorant-italic.woff2` (downloaded from Google Fonts; not
+committed). Nothing at runtime depends on any of this — the site just loads the
+SVGs.
 
 ### Adding a photo
 

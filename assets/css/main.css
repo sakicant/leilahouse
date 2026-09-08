@@ -148,9 +148,7 @@ ul { margin: 0 0 1.1em; padding-left: 1.2em; }
   border-bottom: 1px solid var(--line-2);
 }
 .hdr__inner { display: flex; align-items: center; gap: 18px; min-height: 68px; }
-.brand { display: flex; align-items: baseline; gap: 9px; text-decoration: none; margin-right: auto; }
-.brand__name { font-family: var(--serif); font-size: 1.6rem; font-weight: 600; color: var(--ink); line-height: 1; }
-.brand__sub { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; }
+.brand { display: flex; align-items: center; text-decoration: none; margin-right: auto; }
 
 .nav { display: none; }
 .nav a {
@@ -454,7 +452,6 @@ ul { margin: 0 0 1.1em; padding-left: 1.2em; }
 @media (min-width: 760px) { .ftr__grid { grid-template-columns: 1.4fr 1fr 1fr; } }
 .ftr h3 { color: #fff; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 16px; font-family: var(--sans); font-weight: 700; }
 .ftr ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 9px; }
-.ftr__brand { font-family: var(--serif); font-size: 1.7rem; color: #fff; margin-bottom: 6px; }
 .ftr__bottom {
   margin-top: clamp(36px, 5vw, 52px); padding-block: 22px;
   border-top: 1px solid rgba(255, 255, 255, .1);
@@ -496,10 +493,15 @@ ul { margin: 0 0 1.1em; padding-left: 1.2em; }
 
 /* Cormorant ships old-style figures by default; force lining figures so
    "100 m" and "2026" sit on the baseline like the surrounding text. */
-h1, h2, .brand__name, .rate__price, .cal-month__name, .step::before {
+h1, h2, .rate__price, .cal-month__name, .step::before {
   font-variant-numeric: lining-nums;
   font-feature-settings: "lnum" 1;
 }
 
 /* Wide panoramas keep their own proportions instead of being cropped to 4:3. */
 .feature__media img.is-natural { aspect-ratio: auto; }
+
+/* --- Logo ---------------------------------------------------------------- */
+.brand img { height: 42px; width: auto; }
+@media (min-width: 700px) { .brand img { height: 48px; } }
+.ftr__logo { height: 52px; width: auto; margin-bottom: 14px; }

@@ -4,3 +4,7 @@ Thumbs.db
 *.log
 api/inquiries-failed.log
 .vercel/
+
+# logo build artefacts (the generated SVG/PNG are committed, the font is not)
+.build/
+_preview.html
