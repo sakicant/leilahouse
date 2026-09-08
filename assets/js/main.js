@@ -235,18 +235,39 @@
 
   /* --- reviews: load the third-party widget only when it scrolls into view - */
   var mount = document.querySelector('[data-reviews]');
-  if (mount && 'IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      if (!entries[0].isIntersecting) return;
-      io.disconnect();
+  if (mount) {
+    var reviewsLoaded = false;
+
+    function dropPlaceholder() {
+      var fb = mount.querySelector('.reviews-fallback');
+      if (fb) fb.remove();
+    }
+
+    function loadReviews() {
+      if (reviewsLoaded) return;
+      reviewsLoaded = true;
       var s = document.createElement('script');
       s.src = mount.getAttribute('data-reviews');
       s.defer = true;
-      s.onerror = function () { mount.innerHTML = ''; };
+      s.onerror = dropPlaceholder;
       mount.appendChild(s);
-      var fb = mount.querySelector('.reviews-fallback');
-      if (fb) setTimeout(function () { fb.remove(); }, 4000);
-    }, { rootMargin: '300px' });
-    io.observe(mount);
+      // The widget replaces the section itself; clear our placeholder either
+      // way so it can never sit there saying "Loading" forever.
+      setTimeout(dropPlaceholder, 5000);
+    }
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting) return;
+        io.disconnect();
+        loadReviews();
+      }, { rootMargin: '300px' });
+      io.observe(mount);
+      // Safety net: a few environments never fire the observer (prerender,
+      // a zero-height viewport). Load on a timer rather than stall.
+      setTimeout(loadReviews, 6000);
+    } else {
+      loadReviews();
+    }
   }
 })();
