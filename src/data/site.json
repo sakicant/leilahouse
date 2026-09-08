@@ -43,16 +43,12 @@
       "label": "Amenities"
     },
     {
-      "url": "/location/",
-      "label": "Things to do"
-    },
-    {
       "url": "/faq/",
       "label": "FAQ"
     },
     {
       "url": "/hosts/",
-      "label": "Your hosts"
+      "label": "About hosts"
     },
     {
       "url": "/contact/",

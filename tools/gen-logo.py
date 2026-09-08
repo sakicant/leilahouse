@@ -30,10 +30,10 @@ import math, os, re
 # --------------------------------------------------------------------------
 
 WORDMARK_FONT = ".build/marcellus.ttf"
-WORD_INK = "#0f2233"        # the site's deep navy, on white
-WORD_INK_LIGHT = "#f3ece2"  # on the navy footer
-SUB_INK = "#6b7f90"
-SUB_INK_LIGHT = "#93aabd"
+WORD_INK = "#151515"        # matches the site ink, near-black
+WORD_INK_LIGHT = "#f3ece2"  # on the near-black footer
+SUB_INK = "#9a9490"
+SUB_INK_LIGHT = "#8f8a84"
 
 GOLD_STOPS = [("0", "#e8cf8c"), (".28", "#c9a44c"), (".52", "#f2e2ad"),
               (".74", "#c19735"), ("1", "#9c7526")]
@@ -287,7 +287,7 @@ def build(font=None, name_size=46, sub_size=12.5, sub_tracking=3.4):
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"'
         ' role="img" aria-label="House Leila">\n'
         f'<defs>\n{gradient(GOLD_STOPS)}\n</defs>\n'
-        '  <rect width="64" height="64" rx="13" fill="#0f2233"/>\n'
+        '  <rect width="64" height="64" rx="0" fill="#151515"/>\n'
         '  <g transform="translate(3 13.5) scale(.2417)" fill="url(#g)">\n'
         f'    <path d="{BOLD_UPPER}"/>\n'
         f'    <path d="{BOLD_LOWER}"/>\n'
@@ -310,10 +310,10 @@ def write_touch_icon(path="apple-touch-icon.png", size=180):
     scale = (size - 14) / FISH_W
     dx, dy = 7, (size - FISH_H * scale) / 2
 
-    tile = Image.new("RGB", (size, size), "#0f2233")
+    tile = Image.new("RGB", (size, size), "#151515")
     corner = Image.new("L", (size, size), 0)
     ImageDraw.Draw(corner).rounded_rectangle(
-        [0, 0, size - 1, size - 1], radius=round(size * 0.22), fill=255
+        [0, 0, size - 1, size - 1], radius=round(size * 0.06), fill=255
     )
 
     ramp = [(0.0, (232, 207, 140)), (0.3, (201, 164, 76)), (0.55, (242, 226, 173)),
