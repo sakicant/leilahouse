@@ -1,7 +1,0 @@
-{
-  "_readme": "Booked dates for the availability calendar on /book-now/. Edit this file and re-upload it - nothing else needs to change. Each entry is an inclusive range: the guest occupies every night from 'from' to 'to'. A single date can also be written as a plain string, e.g. \"2026-08-14\". Keep 'updated' current so the note under the calendar stays honest.",
-  "updated": "2026-09-08",
-  "booked": [
-    { "from": "2026-09-01", "to": "2026-09-09", "note": "confirmed booking" }
-  ]
-}

@@ -1,0 +1,24 @@
+{
+  "_readme": "Availability and pricing for House Leila. Edited through /admin/, which writes this file via api/admin.php. Seasons repeat every year and set the default price and minimum stay; 'days' holds only the exceptions, so a date is available at its season price unless it appears there. Safe to edit by hand if you keep the shapes below.",
+  "updated": "2026-09-08T00:00:00Z",
+  "currency": "EUR",
+  "checkIn": "15:00",
+  "checkOut": "10:00",
+  "seasons": [
+    { "id": "pre", "name": "Pre-season", "from": "06-01", "to": "06-30", "price": 200, "minNights": 5 },
+    { "id": "high", "name": "High season", "from": "07-01", "to": "08-31", "price": 415, "minNights": 7 },
+    { "id": "end", "name": "End-season", "from": "09-01", "to": "09-19", "price": 250, "minNights": 5 },
+    { "id": "off", "name": "Off-season", "from": "09-20", "to": "05-31", "price": 130, "minNights": 3 }
+  ],
+  "days": {
+    "2026-09-01": { "status": "booked" },
+    "2026-09-02": { "status": "booked" },
+    "2026-09-03": { "status": "booked" },
+    "2026-09-04": { "status": "booked" },
+    "2026-09-05": { "status": "booked" },
+    "2026-09-06": { "status": "booked" },
+    "2026-09-07": { "status": "booked" },
+    "2026-09-08": { "status": "booked" },
+    "2026-09-09": { "status": "booked" }
+  }
+}

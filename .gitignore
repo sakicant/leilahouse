@@ -8,3 +8,7 @@ api/inquiries-failed.log
 # logo build artefacts (the generated SVG/PNG are committed, the font is not)
 .build/
 _preview.html
+
+# Admin credentials: never commit these (this repository is public).
+api/config.php
+api/admin-attempts.log

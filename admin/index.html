@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Calendar · House Leila</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+
+<div class="signin" data-signin hidden>
+  <form class="signin__card" data-signin-form>
+    <h1>House Leila</h1>
+    <p>Sign in to edit the calendar.</p>
+    <label for="pw">Password</label>
+    <input id="pw" type="password" autocomplete="current-password" required>
+    <p class="signin__error" data-signin-error hidden></p>
+    <button type="submit">Sign in</button>
+  </form>
+</div>
+
+<div class="app" data-app hidden>
+  <header class="bar">
+    <div class="bar__title">
+      <strong>Calendar</strong>
+      <span data-status class="bar__status">Loading…</span>
+    </div>
+    <div class="bar__actions">
+      <button type="button" data-seasons-toggle class="btn btn--ghost">Season rates</button>
+      <button type="button" data-save class="btn btn--primary" disabled>Save changes</button>
+      <button type="button" data-logout class="btn btn--quiet">Sign out</button>
+    </div>
+  </header>
+
+  <section class="seasons" data-seasons hidden>
+    <div class="seasons__head">
+      <h2>Season rates</h2>
+      <p>These repeat every year and set the default price and minimum stay. Anything you change on individual dates below overrides them.</p>
+    </div>
+    <div class="seasons__grid" data-seasons-grid></div>
+    <p class="seasons__note">Dates are day and month. A season may cross the year end, like 20 Sep to 31 May.</p>
+  </section>
+
+  <main class="cal">
+    <div class="cal__nav">
+      <button type="button" data-prev aria-label="Previous month">&#8249;</button>
+      <strong data-month-label></strong>
+      <button type="button" data-next aria-label="Next month">&#8250;</button>
+    </div>
+    <div class="cal__months" data-months></div>
+    <p class="cal__legend">
+      <span><i class="sw sw--free"></i> Available</span>
+      <span><i class="sw sw--booked"></i> Blocked</span>
+      <span><i class="sw sw--custom"></i> Custom price or minimum stay</span>
+    </p>
+  </main>
+
+  <aside class="panel" data-panel hidden>
+    <div class="panel__head">
+      <strong data-panel-range></strong>
+      <button type="button" data-panel-close aria-label="Close">&times;</button>
+    </div>
+
+    <div class="panel__row">
+      <span class="panel__label">Availability</span>
+      <div class="toggle" role="group" aria-label="Availability">
+        <button type="button" data-set-status="booked" title="Blocked">&times;</button>
+        <button type="button" data-set-status="available" title="Available">&check;</button>
+      </div>
+    </div>
+
+    <label class="panel__row panel__row--input">
+      <span class="panel__label">Price per night</span>
+      <span class="field"><i>€</i><input type="number" min="0" step="5" data-price placeholder="season default"></span>
+    </label>
+
+    <label class="panel__row panel__row--input">
+      <span class="panel__label">Minimum stay</span>
+      <span class="field"><input type="number" min="1" max="60" step="1" data-min placeholder="season default"><i>nights</i></span>
+    </label>
+
+    <p class="panel__derived" data-panel-derived></p>
+
+    <div class="panel__foot">
+      <button type="button" class="btn btn--quiet" data-reset>Reset to season default</button>
+      <button type="button" class="btn btn--primary" data-apply>Apply</button>
+    </div>
+  </aside>
+</div>
+
+<script src="/assets/js/calendar-core.js"></script>
+<script src="/admin/admin.js"></script>
+</body>
+</html>

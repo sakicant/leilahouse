@@ -32,10 +32,13 @@ assets/
   img/house/    original photos (1920 px)
   img/area/     drone, Krka and Aquapark photos
   img/r/        generated responsive variants, do not edit by hand
-  data/availability.json   booked dates for the calendar
+  data/calendar.json       availability, prices and seasons
+  js/calendar-core.js      pricing rules shared by the site and the admin
   css/main.css  the whole design system
   js/main.js    nav, lightbox, calendar, form, lazy reviews
 api/contact.php inquiry form handler (needs PHP)
+api/admin.php   calendar admin API (needs PHP + api/config.php)
+admin/          the calendar admin panel
 tools/          build + image scripts
 ```
 
@@ -94,27 +97,67 @@ Page copy lives in `src/pages/*.html`. Phone number, email, address, the nav
 and the FAQ live in `src/data/site.json`. The FAQ is written once there and
 appears both as visible text and as FAQ structured data for Google.
 
-## The availability calendar
+## The calendar, prices and the admin panel
 
-`assets/data/availability.json` drives the calendar on `/book-now/`:
+`assets/data/calendar.json` is the single source of truth for availability and
+pricing. The public calendar, the seasonal rate cards on `/book-now/`, the
+quote on `/contact/` and the admin panel all read it, so none of them can
+disagree with the others. The shared rules live in
+`assets/js/calendar-core.js`.
 
 ```json
 {
-  "updated": "2026-09-08",
-  "booked": [
-    { "from": "2026-07-01", "to": "2026-07-14" },
-    "2026-08-30"
-  ]
+  "currency": "EUR",
+  "seasons": [
+    { "id": "high", "name": "High season", "from": "07-01", "to": "08-31", "price": 415, "minNights": 7 }
+  ],
+  "days": {
+    "2026-09-08": { "status": "booked" },
+    "2026-07-14": { "price": 450, "minNights": 10 }
+  }
 }
 ```
 
-Each range is inclusive. Edit the file, upload it, done. No rebuild needed,
-and nothing else in the site has to change. Keep `updated` current; it is shown
-under the calendar.
+Seasons repeat every year and give the default nightly price and minimum stay.
+A season may cross the year end (off-season runs 09-20 to 05-31). `days` holds
+only the exceptions, so a date not listed there is available at its season
+price. Setting a date back to its season value removes it from `days`, which
+keeps the file small and means a later season change still reaches that date.
 
-If you later want it to update itself, the same file can be generated from an
-Airbnb or Booking.com iCal export by a small cron script, and the front end will
-not need to change.
+### Using the admin
+
+Go to `/admin/`, sign in, then drag across dates to select a range. The panel
+sets availability, nightly price and minimum stay for everything selected;
+"Reset to season default" clears the overrides. "Season rates" opens the yearly
+defaults. Nothing is written until you press Save.
+
+### Setting the admin password (do this once, on the server)
+
+The password is **not** in this repository, and must not be: the repository is
+public. On the server:
+
+```bash
+cd /path/to/site/api
+cp config.sample.php config.php
+php -r 'echo password_hash(readline("New admin password: "), PASSWORD_DEFAULT), PHP_EOL;'
+```
+
+Paste the `$2y$...` output into `config.php`, then check that
+`assets/data/` is writable by the web server (usually `chmod 775`), since that
+is where the panel saves. `api/config.php` and `api/admin-attempts.log` are
+git-ignored.
+
+`admin/.htaccess` also carries commented-out lines for HTTP basic auth if you
+want a second lock in front of the panel.
+
+### What the guest sees
+
+Every free date shows its nightly rate. Picking an arrival and a departure
+gives the number of nights, the rate spread and the total, and refuses ranges
+that are too short for the minimum stay or that cross a booked night. "Request
+these dates" carries the selection to the contact form, where it is re-priced
+from the same file (never trusted from the URL) and shown as a summary. The
+email that reaches you includes the exact quote the guest was looking at.
 
 ## Deploying to the current host
 
@@ -129,7 +172,7 @@ Upload these:
 index.html  404.html  favicon.svg  apple-touch-icon.png
 robots.txt  sitemap.xml  .htaccess
 amenities/  book-now/  contact/  faq/  gallery/  hosts/  location/  privacy-policy/
-assets/  api/
+assets/  api/  admin/
 ```
 
 Notes:

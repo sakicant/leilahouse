@@ -60,6 +60,7 @@ $email     = clean((string)($_POST['email'] ?? ''), 180);
 $arrival   = clean((string)($_POST['arrival'] ?? ''), 20);
 $departure = clean((string)($_POST['departure'] ?? ''), 20);
 $guests    = clean((string)($_POST['guests'] ?? ''), 3);
+$quote     = clean((string)($_POST['quote'] ?? ''), 200);
 $message   = trim((string)($_POST['message'] ?? ''));
 $message   = mb_substr(str_replace("\0", '', $message), 0, 5000);
 
@@ -81,6 +82,7 @@ $lines = [
     'Arrival:    ' . ($arrival ?: 'not given'),
     'Departure:  ' . ($departure ?: 'not given'),
     'Guests:     ' . ($guests ?: 'not given'),
+    'Quoted:     ' . ($quote ?: 'no calendar selection'),
     '',
     'Message',
     '-------',
