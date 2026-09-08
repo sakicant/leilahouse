@@ -32,8 +32,8 @@ import math, os, re
 WORDMARK_FONT = ".build/marcellus.ttf"
 WORD_INK = "#151515"        # matches the site ink, near-black
 WORD_INK_LIGHT = "#f3ece2"  # on the near-black footer
-SUB_INK = "#9a9490"
-SUB_INK_LIGHT = "#8f8a84"
+SUB_INK = "#6f6862"
+SUB_INK_LIGHT = "#b3ada5"
 
 GOLD_STOPS = [("0", "#e8cf8c"), (".28", "#c9a44c"), (".52", "#f2e2ad"),
               (".74", "#c19735"), ("1", "#9c7526")]
@@ -295,8 +295,13 @@ def build(font=None, name_size=46, sub_size=12.5, sub_tracking=3.4):
         '</svg>\n'
     )
 
+    emblem_light_svg = emblem_svg.replace(
+        f'fill="{WORD_INK}"', f'fill="{WORD_INK_LIGHT}"'
+    ).replace(gradient(GOLD_STOPS), gradient(GOLD_STOPS_LIGHT))
+
     return {
         "assets/img/logo.svg": lockup(GOLD_STOPS, WORD_INK, SUB_INK),
+        "assets/img/logo-emblem-light.svg": emblem_light_svg,
         "assets/img/logo-light.svg": lockup(GOLD_STOPS_LIGHT, WORD_INK_LIGHT, SUB_INK_LIGHT),
         "assets/img/logo-emblem.svg": emblem_svg,
         "favicon.svg": favicon_svg,

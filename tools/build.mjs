@@ -10,6 +10,7 @@
  * No dependencies on purpose: this must still build in five years.
  */
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { join, dirname, basename, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -134,6 +135,40 @@ function expandFaq(html) {
   });
 }
 
+/**
+ * Fingerprint the assets whose contents change under a stable filename.
+ *
+ * The photo variants are safe to cache forever because "<name>-<width>.webp"
+ * always means the same picture. The stylesheet, the script and the logos are
+ * not: they get rewritten in place. Serving those as immutable stranded an old
+ * gold-on-black logo in browsers that had already cached it, so every
+ * reference gets ?v=<hash of the file> and a changed file becomes a new URL.
+ */
+const FINGERPRINTED = [
+  '/assets/css/main.css',
+  '/assets/js/main.js',
+  '/assets/img/logo.svg',
+  '/assets/img/logo-light.svg',
+  '/favicon.svg',
+  '/apple-touch-icon.png'
+];
+
+const fingerprints = new Map(
+  FINGERPRINTED.map((p) => {
+    const abs = join(ROOT, p.replace(/^\//, ''));
+    if (!existsSync(abs)) return [p, null];
+    return [p, createHash('sha1').update(readFileSync(abs)).digest('hex').slice(0, 8)];
+  })
+);
+
+function fingerprintAssets(html) {
+  for (const [path, hash] of fingerprints) {
+    if (!hash) continue;
+    html = html.split(`"${path}"`).join(`"${path}?v=${hash}"`);
+  }
+  return html;
+}
+
 /** {{site.phone}} style interpolation against a scope object. */
 function interpolate(tpl, scope) {
   return tpl.replace(/\{\{\s*([\w.]+)\s*\}\}/g, (full, path) => {
@@ -249,6 +284,7 @@ for (const file of readdirSync(pagesDir).filter((f) => f.endsWith('.html'))) {
     .replace('{{navMobile}}', navHtml(meta.url, true))
     .replace('{{jsonld}}', jsonLd(meta));
   html = expandIcons(interpolate(html, scope));
+  html = fingerprintAssets(html);
 
   const outPath =
     meta.url === '/'
