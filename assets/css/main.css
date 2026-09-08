@@ -1,5 +1,5 @@
 /* ==========================================================================
-   House Leila — design system
+   House Leila design system
    One stylesheet, no framework. Mobile-first.
    ========================================================================== */
 
@@ -505,3 +505,4 @@ h1, h2, .rate__price, .cal-month__name, .step::before {
 .brand img { height: 42px; width: auto; }
 @media (min-width: 700px) { .brand img { height: 48px; } }
 .ftr__logo { height: 52px; width: auto; margin-bottom: 14px; }
+.ftr__credit a { color: #cddbe6; font-weight: 600; }

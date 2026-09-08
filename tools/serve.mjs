@@ -1,7 +1,7 @@
 /**
  * Local preview server: node tools/serve.mjs [port]
  * Serves the built site the way the production host will (/gallery/ ->
- * gallery/index.html). Development only — the real site is plain static files.
+ * gallery/index.html). Development only. The real site is plain static files.
  */
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';

@@ -30,7 +30,7 @@
 
 <header class="hdr">
   <div class="wrap hdr__inner">
-    <a class="brand" href="/" aria-label="House Leila, Šibenik — home">
+    <a class="brand" href="/" aria-label="Go to the House Leila home page">
       <img src="/assets/img/logo.svg" alt="House Leila" width="365" height="100" fetchpriority="high">
     </a>
     <nav class="nav" aria-label="Main">
@@ -55,7 +55,7 @@
     <div class="ftr__grid">
       <div>
         <img class="ftr__logo" src="/assets/img/logo-light.svg" alt="House Leila" width="365" height="100" loading="lazy">
-        <p style="margin-bottom:18px">Private holiday home in Zablaće — 100 m from the Adriatic, 7 km from Šibenik.</p>
+        <p style="margin-bottom:18px">Private holiday home in Zablaće, 100 m from the Adriatic and 7 km from Šibenik.</p>
         <ul>
           <li><a href="{{site.mapLink}}" target="_blank" rel="noopener">{{site.address.full}}</a></li>
           <li><a href="tel:{{site.phoneRaw}}">{{site.phone}}</a></li>
@@ -77,19 +77,21 @@
         <ul>
           <li><a href="/book-now/">Check availability</a></li>
           <li><a href="/contact/">Contact us</a></li>
-          <li><a href="{{site.whatsapp}}" target="_blank" rel="noopener">WhatsApp</a></li>
           <li><a href="/privacy-policy/">Privacy policy</a></li>
         </ul>
         <h3 style="margin-top:26px">Partners</h3>
         <ul>
-          <li>Nekretnine 24 d.o.o.</li>
-          <li>Taxi Šibenik — TAXI Antonio</li>
+          <li><a href="{{site.partnerRealEstate}}" target="_blank" rel="noopener">{{site.partnerRealEstateName}}</a></li>
+          <li><a href="{{site.partnerTaxi}}" target="_blank" rel="noopener">{{site.partnerTaxiName}}</a></li>
         </ul>
       </div>
     </div>
     <div class="ftr__bottom">
       <span>© <span id="yr">2026</span> House Leila · Zablaće, Šibenik, Croatia</span>
       <span>Direct booking · No platform fees</span>
+      <span class="ftr__credit">Website by
+        <a href="{{site.creditUrl}}" target="_blank" rel="noopener">{{site.creditName}}</a>
+      </span>
     </div>
   </div>
 </footer>

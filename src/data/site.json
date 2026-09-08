@@ -20,6 +20,12 @@
   "checkOut": "10:00",
   "hosts": "Hrvojka & Tomislav",
   "reviewsWidget": "https://cdn.trustindex.io/loader.js?1fe56747758509574e16340c79d",
+  "partnerRealEstate": "https://www.realestatecroatia-n24.com/en",
+  "partnerRealEstateName": "Nekretnine 24 d.o.o.",
+  "partnerTaxi": "https://taxisibenik.hr/",
+  "partnerTaxiName": "Taxi Antonio",
+  "creditUrl": "https://antoniodigital.com",
+  "creditName": "Antonio Digital",
   "nav": [
     { "url": "/", "label": "Home" },
     { "url": "/gallery/", "label": "Gallery" },

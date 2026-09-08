@@ -1,7 +1,7 @@
-# House Leila — leilasibenik.com
+# House Leila (leilasibenik.com)
 
 Static replacement for the WordPress site. Plain HTML, CSS and ~5 KB of
-JavaScript — no framework, no database, no plugins. The only server-side piece
+JavaScript, with no framework, no database and no plugins. The only server-side piece
 is one PHP file that emails the inquiry form.
 
 ## Why this is faster
@@ -16,7 +16,7 @@ is one PHP file that emails the inquiry form.
 | Third-party JS on load | Trustindex, Site Kit, WhatsApp widget | reviews load only when scrolled to |
 
 A phone that previously downloaded a full-width 1920 px photo now gets the
-480 px variant — roughly a tenth of the bytes.
+480 px variant, roughly a tenth of the bytes.
 
 ## Layout
 
@@ -31,7 +31,7 @@ assets/
   img/logo*.svg the logo lockups (generated, committed)
   img/house/    original photos (1920 px)
   img/area/     drone, Krka and Aquapark photos
-  img/r/        generated responsive variants — do not edit by hand
+  img/r/        generated responsive variants, do not edit by hand
   data/availability.json   booked dates for the calendar
   css/main.css  the whole design system
   js/main.js    nav, lightbox, calendar, form, lazy reviews
@@ -62,9 +62,9 @@ webfont request. It writes four files:
 
 | File | Use |
 |---|---|
-| `assets/img/logo.svg` | horizontal lockup — site header |
+| `assets/img/logo.svg` | horizontal lockup for the site header |
 | `assets/img/logo-light.svg` | same, lightened for the dark footer |
-| `assets/img/logo-emblem.svg` | wordmark inside the fish — social, print, signage |
+| `assets/img/logo-emblem.svg` | wordmark inside the fish, for social, print and signage |
 | `favicon.svg` + `apple-touch-icon.png` | the fish alone on navy, drawn with a heavier stroke so it survives 16 px |
 
 The outputs are committed, so you only need to run the script to change the
@@ -76,7 +76,7 @@ python tools/gen-logo.py
 ```
 
 It expects `.build/cormorant-italic.woff2` (downloaded from Google Fonts; not
-committed). Nothing at runtime depends on any of this — the site just loads the
+committed). Nothing at runtime depends on any of this. The site just loads the
 SVGs.
 
 ### Adding a photo
@@ -91,7 +91,7 @@ SVGs.
 ### Changing text
 
 Page copy lives in `src/pages/*.html`. Phone number, email, address, the nav
-and the FAQ live in `src/data/site.json` — the FAQ is written once there and
+and the FAQ live in `src/data/site.json`. The FAQ is written once there and
 appears both as visible text and as FAQ structured data for Google.
 
 ## The availability calendar
@@ -108,12 +108,12 @@ appears both as visible text and as FAQ structured data for Google.
 }
 ```
 
-Each range is inclusive. Edit the file, upload it, done — no rebuild needed,
+Each range is inclusive. Edit the file, upload it, done. No rebuild needed,
 and nothing else in the site has to change. Keep `updated` current; it is shown
 under the calendar.
 
 If you later want it to update itself, the same file can be generated from an
-Airbnb or Booking.com iCal export by a small cron script — the front end will
+Airbnb or Booking.com iCal export by a small cron script, and the front end will
 not need to change.
 
 ## Deploying to the current host
@@ -135,15 +135,15 @@ assets/  api/
 Notes:
 
 - **`.htaccess`** forces HTTPS and the non-www host, redirects the dead
-  WordPress paths (`/wp-admin`, `/feed`, …), sets a one-year immutable cache on
+  WordPress paths (`/wp-admin`, `/feed`, and so on), sets a one-year immutable cache on
   images and fonts, and keeps HTML always revalidating. Remove the WordPress
-  `.htaccess` rules first — do not merge the two.
+  `.htaccess` rules first. Do not merge the two.
 - **`api/contact.php`** must land at `/api/contact.php`. Check `$FROM` inside it
   is an address on your own domain, or the host may silently drop the mail.
-- URLs keep the WordPress shape (`/gallery/`, `/book-now/`, …), so existing
+- URLs keep the WordPress shape (`/gallery/`, `/book-now/`, and so on), so existing
   links, bookmarks and Google's index all still resolve. `/hosts/` was
   `/hosts/` before too.
-- Retire WordPress only once the static site is verified — take a backup of
+- Retire WordPress only once the static site is verified. Take a backup of
   `wp-content/uploads` first; the originals of every photo used here are in
   `assets/img/`.
 
@@ -151,7 +151,7 @@ Notes:
 
 `vercel.json` is included for review deployments. PHP does not run on Vercel,
 so the inquiry form will show its "please email or WhatsApp us" fallback there.
-That is expected — it works on the real host.
+That is expected. It works on the real host.
 
 ## Things deliberately left out
 

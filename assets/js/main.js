@@ -1,4 +1,4 @@
-/* House Leila — all site behaviour. No dependencies, ~5 KB.
+/* House Leila site behaviour. No dependencies, ~5 KB.
    Every block is guarded so one missing element can never break the rest. */
 (function () {
   'use strict';
@@ -38,7 +38,7 @@
       var t = tiles[i];
       img.src = t.getAttribute('data-full');
       img.alt = t.getAttribute('data-cap') || '';
-      cap.textContent = (i + 1) + ' / ' + tiles.length + ' — ' + (t.getAttribute('data-cap') || '');
+      cap.textContent = (i + 1) + ' / ' + tiles.length + ': ' + (t.getAttribute('data-cap') || '');
     }
     function open(n) {
       lastFocus = document.activeElement;
@@ -169,13 +169,13 @@
         });
         render();
         if (updEl) {
-          updEl.textContent = 'Availability last updated ' + (data.updated || '—') +
-            '. Dates shown are a guide — we confirm the exact availability when you send an inquiry.';
+          updEl.textContent = 'Availability last updated ' + (data.updated || 'recently') +
+            '. Dates shown are a guide, and we confirm the exact availability when you send an inquiry.';
         }
       })
       .catch(function () {
         if (updEl) {
-          updEl.textContent = 'We could not load the live availability just now — please send us a message and we will confirm your dates.';
+          updEl.textContent = 'We could not load the live availability just now. Please send us a message and we will confirm your dates.';
         }
       });
   }
@@ -205,8 +205,8 @@
         body: new FormData(form)
       })
         // Only an explicit {"ok":true} counts as sent. A 200 that is not our
-        // JSON means the handler did not run — a host serving contact.php as a
-        // static file, say — and must never look like success to the guest.
+        // JSON means the handler did not run (a host serving contact.php as a
+        // static file, say), and it must never look like success to the guest.
         .then(function (r) {
           return r.text().then(function (text) {
             var data = null;
@@ -217,7 +217,7 @@
         })
         .then(function () {
           form.reset();
-          say('Thank you — your inquiry is on its way. We usually reply within a few hours.', true);
+          say('Thank you, your inquiry is on its way. We usually reply within a few hours.', true);
         })
         .catch(function () {
           say('Sorry, the form could not be sent. Please email info@leilasibenik.com or message us on WhatsApp and we will get straight back to you.', false);

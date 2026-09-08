@@ -78,9 +78,9 @@ $lines = [
     '',
     'Name:       ' . $name,
     'Email:      ' . $email,
-    'Arrival:    ' . ($arrival ?: '—'),
-    'Departure:  ' . ($departure ?: '—'),
-    'Guests:     ' . ($guests ?: '—'),
+    'Arrival:    ' . ($arrival ?: 'not given'),
+    'Departure:  ' . ($departure ?: 'not given'),
+    'Guests:     ' . ($guests ?: 'not given'),
     '',
     'Message',
     '-------',
@@ -88,12 +88,12 @@ $lines = [
     '',
     str_repeat('-', 40),
     'Sent:       ' . gmdate('Y-m-d H:i') . ' UTC',
-    'IP:         ' . ($_SERVER['REMOTE_ADDR'] ?? '—'),
+    'IP:         ' . ($_SERVER['REMOTE_ADDR'] ?? 'unknown'),
 ];
 $body = implode("\n", $lines);
 
 $subject = sprintf(
-    'House Leila inquiry — %s%s',
+    'House Leila inquiry from %s%s',
     $name,
     $arrival !== '' ? ' (' . $arrival . ($departure !== '' ? ' to ' . $departure : '') . ')' : ''
 );
