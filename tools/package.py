@@ -67,17 +67,26 @@ the folder structure exactly as it is here.
    two: the WordPress rewrite rules will fight these. The file may be hidden in
    your FTP client, so turn on "show hidden files".
 
-3. SET THE ADMIN PASSWORD  (needed before the calendar admin works)
-   In the api/ folder on the server:
-       cp config.sample.php config.php
-   Generate a hash, either over SSH:
-       php -r 'echo password_hash(readline("Password: "), PASSWORD_DEFAULT), PHP_EOL;'
-   or with your host's PHP terminal, then paste the $2y$... value into
-   config.php between the quotes. Never put the plain password in the file.
+3. SET THE ADMIN PASSWORD
+   Open the admin panel in a browser:
+       https://your-site/{ADMIN}/
+   The first time, it asks you to choose a password and then signs you in.
+   Nothing to install, no hash to paste. Do this straight after uploading,
+   before anyone else finds the address.
 
-4. MAKE THE CALENDAR WRITABLE
-   The admin panel saves to assets/data/calendar.json, so the web server needs
-   write permission on the assets/data folder (chmod 775 usually does it).
+   The panel writes your password, hashed, to api/config.php. If your host
+   will not let it write there, it shows you the file contents to create by
+   hand instead. Once a password exists that setup screen never appears
+   again, so it cannot be used to reset anything from outside.
+
+   To change the password later: delete api/config.php on the server and open
+   the panel again.
+
+4. MAKE THE CALENDAR AND CONFIG WRITABLE
+   The panel saves to assets/data/calendar.json and writes api/config.php, so
+   the web server needs write permission on the assets/data folder and on api
+   (chmod 775 usually does it). You can tighten api back to 755 once the
+   password is set.
 
 5. CHECK THE FROM ADDRESS
    api/contact.php has a $FROM near the top. It must be an address on your own
@@ -100,7 +109,8 @@ other file needs changing.
 
 NOT INCLUDED, ON PURPOSE
 ------------------------
-  api/config.php        your password hash, created on the server (step 3)
+  api/config.php        your password hash. The panel creates this itself the
+                        first time you open it (step 3).
   assets/img/house|area the full-size photo originals, which the site never
                         requests. They live in the git repository as the
                         archive copy.

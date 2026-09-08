@@ -9,9 +9,10 @@
  * here, so it can be renamed on the server without touching this file.
  *
  * Actions (POST, JSON in and out):
+ *   session {}                  -> signed in? configured yet?
+ *   setup   { password }        -> first run only: writes config.php
  *   login   { password }        -> starts a session
  *   logout  {}                  -> ends it
- *   session {}                  -> is the caller signed in?
  *   save    { calendar, csrf }  -> validates and writes the calendar
  *
  * The password hash lives in config.php, which is NOT in the repository.
@@ -255,20 +256,72 @@ $action = (string)($body['action'] ?? '');
 
 boot_session();
 
-if (!is_file(CONFIG_PATH)) {
-    fail('The admin is not configured yet. Copy api/config.sample.php to api/config.php and set your password hash.', 503);
+$hash = '';
+if (is_file(CONFIG_PATH)) {
+    $config = require CONFIG_PATH;
+    $hash = (string)($config['passwordHash'] ?? '');
 }
-$config = require CONFIG_PATH;
-$hash = (string)($config['passwordHash'] ?? '');
-if ($hash === '') {
-    fail('No password hash configured.', 503);
-}
+$configured = $hash !== '';
 
 switch ($action) {
     case 'session':
-        send(['ok' => true, 'signedIn' => signed_in(), 'csrf' => $_SESSION['csrf'] ?? null]);
+        send([
+            'ok' => true,
+            'signedIn' => signed_in(),
+            'needsSetup' => !$configured,
+            'csrf' => $_SESSION['csrf'] ?? null,
+        ]);
+
+    case 'setup':
+        // First run only. Once a hash exists this path is closed permanently,
+        // so it can never be used to reset a password from the outside.
+        if ($configured) {
+            fail('A password is already set. To change it, edit api/config.php on the server.', 409);
+        }
+        $password = (string)($body['password'] ?? '');
+        if (mb_strlen($password) < 10) {
+            fail('Use at least 10 characters. This is the only lock on your calendar.', 422);
+        }
+        $newHash = password_hash($password, PASSWORD_DEFAULT);
+        if (!is_string($newHash) || !str_starts_with($newHash, '$2y$')) {
+            fail('Could not hash the password on this server.', 500);
+        }
+
+        $php = "<?php
+
+/**
+ * House Leila admin password. Written by the panel on first run.
+ *
+ * To change the password, delete this file and open the panel again.
+ * Never commit this file.
+ */
+
+return [
+    'passwordHash' => '" . $newHash . "',
+];
+";
+
+        $written = @file_put_contents(CONFIG_PATH, $php, LOCK_EX) !== false;
+        if ($written) {
+            @chmod(CONFIG_PATH, 0600);
+            session_regenerate_id(true);
+            $_SESSION['admin'] = true;
+            $_SESSION['at'] = time();
+            $_SESSION['csrf'] = bin2hex(random_bytes(16));
+            send(['ok' => true, 'signedIn' => true, 'csrf' => $_SESSION['csrf']]);
+        }
+        // The api directory is not writable. Hand back the hash so it can be
+        // pasted in by hand rather than leaving the owner stuck.
+        send([
+            'ok' => false,
+            'error' => 'Could not write api/config.php, the folder is not writable.',
+            'manualHash' => $newHash,
+        ], 200);
 
     case 'login':
+        if (!$configured) {
+            fail('No password is set yet. Reload the page to choose one.', 409);
+        }
         $ip = client_ip();
         if (count(recent_failures($ip)) >= MAX_ATTEMPTS) {
             fail('Too many attempts. Try again in fifteen minutes.', 429);

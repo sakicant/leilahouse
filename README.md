@@ -131,24 +131,19 @@ sets availability, nightly price and minimum stay for everything selected;
 "Reset to season default" clears the overrides. "Season rates" opens the yearly
 defaults. Nothing is written until you press Save.
 
-### Setting the admin password (do this once, on the server)
+### Setting the admin password
 
-The password is **not** in this repository, and must not be: the repository is
-public. On the server:
+Open the panel in a browser after uploading. On a fresh install it asks you to
+choose a password, writes the hash to `api/config.php`, and signs you in. Once
+that file has a hash the setup screen never appears again, so it cannot be used
+to reset the password from outside.
 
-```bash
-cd /path/to/site/api
-cp config.sample.php config.php
-php -r 'echo password_hash(readline("New admin password: "), PASSWORD_DEFAULT), PHP_EOL;'
-```
+If `api/` is not writable the panel shows you the file to create by hand
+instead. To change the password later, delete `api/config.php` on the server
+and open the panel again.
 
-Paste the `$2y$...` output into `config.php`, then check that
-`assets/data/` is writable by the web server (usually `chmod 775`), since that
-is where the panel saves. `api/config.php` and `api/admin-attempts.log` are
-git-ignored.
-
-`manage-t8orsq7hiw/.htaccess` also carries commented-out lines for HTTP basic
-auth if you want a second lock in front of the panel.
+`assets/data/` must be writable for the calendar to save. `api/config.php` and
+`api/admin-attempts.log` are git-ignored and never shipped.
 
 ### The panel is not in this repository
 
