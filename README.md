@@ -38,7 +38,7 @@ assets/
   js/main.js    nav, lightbox, calendar, form, lazy reviews
 api/contact.php inquiry form handler (needs PHP)
 api/admin.php   calendar admin API (needs PHP + api/config.php)
-admin/          the calendar admin panel
+manage-t8orsq7hiw/  the calendar admin panel
 tools/          build + image scripts
 ```
 
@@ -126,7 +126,7 @@ keeps the file small and means a later season change still reaches that date.
 
 ### Using the admin
 
-Go to `/admin/`, sign in, then drag across dates to select a range. The panel
+Go to `/manage-t8orsq7hiw/`, sign in, then drag across dates to select a range. The panel
 sets availability, nightly price and minimum stay for everything selected;
 "Reset to season default" clears the overrides. "Season rates" opens the yearly
 defaults. Nothing is written until you press Save.
@@ -147,8 +147,36 @@ Paste the `$2y$...` output into `config.php`, then check that
 is where the panel saves. `api/config.php` and `api/admin-attempts.log` are
 git-ignored.
 
-`admin/.htaccess` also carries commented-out lines for HTTP basic auth if you
-want a second lock in front of the panel.
+`manage-t8orsq7hiw/.htaccess` also carries commented-out lines for HTTP basic
+auth if you want a second lock in front of the panel.
+
+### The panel's address
+
+The folder is named `manage-t8orsq7hiw` rather than `admin` so the usual
+bot sweeps for `/admin`, `/wp-admin` and friends find nothing. Treat that as
+noise reduction, not as a secret: this repository is public, so the name is
+readable by anyone who looks here. The password is what actually protects it.
+
+If you want an address that is genuinely private, rename the folder on the
+server to anything you like and do not commit that name. Everything inside it
+uses relative links, so a rename needs no other edit.
+
+### Seeing it without PHP (Vercel)
+
+Vercel does not run PHP, so `api/admin.php` is not there and nothing can be
+saved. Opening the panel on the preview deploy shows the sign-in with an
+explanation and a "Look around without saving" link, which loads the real
+calendar so you can judge the layout. A brown banner across the top says it is
+preview only.
+
+To use it for real you need PHP, which means either the live LiteSpeed host or
+a local PHP server:
+
+```bash
+php -S localhost:8000 -t .
+```
+
+Then open `http://localhost:8000/manage-t8orsq7hiw/`.
 
 ### What the guest sees
 
@@ -172,7 +200,7 @@ Upload these:
 index.html  404.html  favicon.svg  apple-touch-icon.png
 robots.txt  sitemap.xml  .htaccess
 amenities/  book-now/  contact/  faq/  gallery/  hosts/  location/  privacy-policy/
-assets/  api/  admin/
+assets/  api/  manage-t8orsq7hiw/
 ```
 
 Notes:

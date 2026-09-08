@@ -1,5 +1,5 @@
 {
-  "_readme": "Availability and pricing for House Leila. Edited through /admin/, which writes this file via api/admin.php. Seasons repeat every year and set the default price and minimum stay; 'days' holds only the exceptions, so a date is available at its season price unless it appears there. Safe to edit by hand if you keep the shapes below.",
+  "_readme": "Availability and pricing for House Leila. Edited through the admin panel, which writes this file via api/admin.php. Seasons repeat every year and set the default price and minimum stay; 'days' holds only the exceptions, so a date is available at its season price unless it appears there. Safe to edit by hand if you keep the shapes below.",
   "updated": "2026-09-08T00:00:00Z",
   "currency": "EUR",
   "checkIn": "15:00",

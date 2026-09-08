@@ -156,3 +156,15 @@ input { font: inherit; }
 .field input { width: 116px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 7px; text-align: right; }
 .panel__derived { margin: 12px 0 0; font-size: .82rem; color: var(--ink-3); }
 .panel__foot { display: flex; gap: 10px; justify-content: flex-end; margin-top: 16px; }
+
+/* --- preview mode (no PHP behind this host) -------------------------------- */
+.signin__preview { margin: 0; text-align: center; }
+.signin__preview button {
+  background: none; border: 0; color: var(--ink-3); font-size: .86rem;
+  text-decoration: underline; cursor: pointer; padding: 10px 4px 0;
+}
+.signin__preview button:hover { color: var(--ink); }
+.preview-banner {
+  margin: 0; padding: 11px 18px; background: #3a2f22; color: #f0dcc4;
+  font-size: .86rem; text-align: center; font-weight: 600;
+}

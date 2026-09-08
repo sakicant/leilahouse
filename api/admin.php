@@ -2,8 +2,11 @@
 /**
  * House Leila calendar admin API.
  *
- * Backs /admin/, which edits assets/data/calendar.json: nightly prices,
- * blocked dates, minimum stays and the season defaults.
+ * Backs the calendar admin panel, which edits assets/data/calendar.json:
+ * nightly prices, blocked dates, minimum stays and the season defaults.
+ *
+ * The panel lives in a directory whose name is deliberately not referenced
+ * here, so it can be renamed on the server without touching this file.
  *
  * Actions (POST, JSON in and out):
  *   login   { password }        -> starts a session
@@ -138,7 +141,7 @@ function money(mixed $v): ?int {
  */
 function clean_calendar(array $in): array {
     $out = [
-        '_readme'  => 'Availability and pricing for House Leila. Edited through /admin/. Seasons repeat every year and set the default price and minimum stay; "days" holds only the exceptions.',
+        '_readme'  => 'Availability and pricing for House Leila. Edited through the admin panel. Seasons repeat every year and set the default price and minimum stay; "days" holds only the exceptions.',
         'updated'  => gmdate('Y-m-d\TH:i:s\Z'),
         'currency' => 'EUR',
         'checkIn'  => '15:00',

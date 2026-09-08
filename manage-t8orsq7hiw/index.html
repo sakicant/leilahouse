@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Calendar · House Leila</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/admin/admin.css">
+<link rel="stylesheet" href="admin.css">
 </head>
 <body>
 
@@ -17,11 +17,17 @@
     <label for="pw">Password</label>
     <input id="pw" type="password" autocomplete="current-password" required>
     <p class="signin__error" data-signin-error hidden></p>
+    <p class="signin__preview" data-preview-offer hidden>
+      <button type="button" data-preview>Look around without saving</button>
+    </p>
     <button type="submit">Sign in</button>
   </form>
 </div>
 
 <div class="app" data-app hidden>
+  <p class="preview-banner" data-preview-banner hidden>
+    Preview only. This host does not run PHP, so nothing here can be saved.
+  </p>
   <header class="bar">
     <div class="bar__title">
       <strong>Calendar</strong>
@@ -91,6 +97,6 @@
 </div>
 
 <script src="/assets/js/calendar-core.js"></script>
-<script src="/admin/admin.js"></script>
+<script src="admin.js"></script>
 </body>
 </html>

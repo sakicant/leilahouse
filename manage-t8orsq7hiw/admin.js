@@ -41,6 +41,9 @@
   var data = null;      // the calendar being edited
   var csrf = null;
   var dirty = false;
+  // Set when the API is unreachable (no PHP, as on the Vercel preview). The
+  // panel still renders so the layout can be judged, but nothing can be saved.
+  var preview = false;
   var cursor = new Date();
   cursor = new Date(cursor.getFullYear(), cursor.getMonth(), 1);
 
@@ -125,11 +128,11 @@
     var end = new Date(cursor.getFullYear(), cursor.getMonth() + 1, 1);
     el.monthLabel.textContent = C.MONTHS[cursor.getMonth()] + ' to ' +
       C.MONTHS[end.getMonth()] + ' ' + end.getFullYear();
-    el.save.disabled = !dirty;
-    el.status.textContent = dirty
-      ? 'Unsaved changes'
-      : 'Saved ' + String(data.updated || '').slice(0, 10);
-    el.status.className = 'bar__status' + (dirty ? ' is-dirty' : '');
+    el.save.disabled = !dirty || preview;
+    el.status.textContent = preview
+      ? 'Preview only, changes are not saved'
+      : (dirty ? 'Unsaved changes' : 'Saved ' + String(data.updated || '').slice(0, 10));
+    el.status.className = 'bar__status' + (dirty && !preview ? ' is-dirty' : '');
   }
 
   function renderSeasons() {
@@ -321,7 +324,7 @@
   });
 
   window.addEventListener('beforeunload', function (e) {
-    if (dirty) { e.preventDefault(); e.returnValue = ''; }
+    if (dirty && !preview) { e.preventDefault(); e.returnValue = ''; }
   });
 
   el.signinForm.addEventListener('submit', function (e) {
@@ -361,14 +364,29 @@
       });
   }
 
+  var previewOffer = document.querySelector('[data-preview-offer]');
+  var previewBanner = document.querySelector('[data-preview-banner]');
+  var previewBtn = document.querySelector('[data-preview]');
+
+  if (previewBtn) {
+    previewBtn.addEventListener('click', function () {
+      preview = true;
+      previewBanner.hidden = false;
+      el.logout.hidden = true;
+      start();
+    });
+  }
+
   call('session')
     .then(function (res) {
       if (res.signedIn) { csrf = res.csrf; start(); }
       else showSignIn();
     })
     .catch(function (err) {
+      // No PHP behind this host. Say so plainly and offer a look around.
       el.signin.hidden = false;
       el.signinError.textContent = err.message;
       el.signinError.hidden = false;
+      if (previewOffer) previewOffer.hidden = false;
     });
 })();
