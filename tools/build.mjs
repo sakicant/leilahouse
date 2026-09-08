@@ -161,6 +161,31 @@ const fingerprints = new Map(
   })
 );
 
+/**
+ * Keep the width/height on inline SVG logos in step with their viewBox.
+ *
+ * Those attributes only set the aspect ratio the browser reserves before the
+ * file loads, but a stale pair reserves the wrong box and the header jumps.
+ * The logo is generated art whose proportions change whenever the wordmark
+ * does, so read them from the file rather than trusting a hand-typed number.
+ */
+function syncSvgDimensions(html) {
+  return html.replace(
+    /<img([^>]*?)src="(\/assets\/img\/[^"]+\.svg)"([^>]*?)>/g,
+    (tag, before, src, after) => {
+      const abs = join(ROOT, src.replace(/^\//, ''));
+      if (!existsSync(abs)) return tag;
+      const box = readFileSync(abs, 'utf8').match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/);
+      if (!box) return tag;
+      const [w, h] = [Math.round(Number(box[1])), Math.round(Number(box[2]))];
+      const rest = (before + after)
+        .replace(/\s*width="[^"]*"/, '')
+        .replace(/\s*height="[^"]*"/, '');
+      return `<img${rest} src="${src}" width="${w}" height="${h}">`;
+    }
+  );
+}
+
 function fingerprintAssets(html) {
   for (const [path, hash] of fingerprints) {
     if (!hash) continue;
@@ -284,6 +309,7 @@ for (const file of readdirSync(pagesDir).filter((f) => f.endsWith('.html'))) {
     .replace('{{navMobile}}', navHtml(meta.url, true))
     .replace('{{jsonld}}', jsonLd(meta));
   html = expandIcons(interpolate(html, scope));
+  html = syncSvgDimensions(html);
   html = fingerprintAssets(html);
 
   const outPath =

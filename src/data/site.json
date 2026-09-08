@@ -43,10 +43,6 @@
       "label": "Amenities"
     },
     {
-      "url": "/faq/",
-      "label": "FAQ"
-    },
-    {
       "url": "/hosts/",
       "label": "About hosts"
     },

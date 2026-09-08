@@ -238,7 +238,7 @@ def fish_group(streaks=True, opacity=".55"):
     return "\n".join(out)
 
 
-def build(font=None, name_size=46, sub_size=12.5, sub_tracking=3.4):
+def build(font=None, name_size=46, sub_size=17, sub_tracking=4.6):
     """Return {filename: svg} for the whole logo set, set in `font`."""
     font = font or WORDMARK_FONT
     name, name_w = wordmark("House Leila", name_size, font)
@@ -267,7 +267,7 @@ def build(font=None, name_size=46, sub_size=12.5, sub_tracking=3.4):
             '  </g>\n'
             f'  <g transform="translate({mark_w + gap:.1f} 54)">\n'
             f'    <path d="{name}" fill="{ink}"/>\n'
-            f'    <g transform="translate(2 22)"><path d="{sub}" fill="{sub_ink}"/></g>\n'
+            f'    <g transform="translate(2 27)"><path d="{sub}" fill="{sub_ink}"/></g>\n'
             '  </g>\n'
             '</svg>\n'
         )
