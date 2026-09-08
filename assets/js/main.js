@@ -204,9 +204,18 @@
         headers: { Accept: 'application/json' },
         body: new FormData(form)
       })
-        .then(function (r) { return r.json().catch(function () { return { ok: r.ok }; }); })
-        .then(function (res) {
-          if (!res.ok) throw new Error(res.error || 'send failed');
+        // Only an explicit {"ok":true} counts as sent. A 200 that is not our
+        // JSON means the handler did not run — a host serving contact.php as a
+        // static file, say — and must never look like success to the guest.
+        .then(function (r) {
+          return r.text().then(function (text) {
+            var data = null;
+            try { data = JSON.parse(text); } catch (e) { /* not our handler */ }
+            if (!r.ok || !data || data.ok !== true) throw new Error('send failed');
+            return data;
+          });
+        })
+        .then(function () {
           form.reset();
           say('Thank you — your inquiry is on its way. We usually reply within a few hours.', true);
         })

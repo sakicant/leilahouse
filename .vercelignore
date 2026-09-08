@@ -1,0 +1,3 @@
+# The preview host cannot run PHP; keep the handler out of it entirely so the
+# form falls back to WhatsApp/email instead of serving the source as a file.
+api/
