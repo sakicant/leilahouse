@@ -1,0 +1,140 @@
+<!--meta {
+  "url": "/contact/",
+  "title": "Contact House Leila | Zablaće Holiday Home near Šibenik",
+  "description": "Contact Hrvojka and Tomislav about availability, booking or the Šibenik area — by phone, WhatsApp, email or the inquiry form. We reply within a few hours.",
+  "ogImage": "house-leila-evening-couch-garden",
+  "h1": "Get in touch",
+  "crumb": "Contact"
+} -->
+
+<section class="pagehead">
+  <div class="pagehead__media">
+    <x-img src="house-leila-evening-couch-garden" alt="Terrace lounge beside the stone wall as the evening light fades" sizes="100vw" priority />
+  </div>
+  <div class="wrap pagehead__inner">
+    <span class="eyebrow">Contact</span>
+    <h1>Get in touch with us</h1>
+    <p>As your local hosts, we are here to make sure every detail of your Dalmatian holiday is planned properly. Ask us anything.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="grid grid--2" style="align-items:start">
+
+      <div>
+        <span class="eyebrow">Contact {{site.hosts}} directly</span>
+        <h2 style="margin-bottom:.6em">Call, message or email</h2>
+        <ul class="contact-list">
+          <li><x-icon name="phone" /><a href="tel:{{site.phoneRaw}}">{{site.phone}}<small>Phone call</small></a></li>
+          <li><x-icon name="message" /><a href="{{site.whatsapp}}" target="_blank" rel="noopener">{{site.phone}}<small>WhatsApp — usually the fastest</small></a></li>
+          <li><x-icon name="mail" /><a href="mailto:{{site.email}}">{{site.email}}<small>Email</small></a></li>
+          <li><x-icon name="map-pin" /><a href="{{site.mapLink}}" target="_blank" rel="noopener">{{site.address.full}}<small>Open in Google Maps</small></a></li>
+          <li><x-icon name="globe" /><span style="color:var(--ink);font-weight:600">{{site.languages}}<small style="font-weight:400;color:var(--ink-3)">Languages spoken</small></span></li>
+          <li><x-icon name="clock" /><span style="color:var(--ink);font-weight:600">Check-in {{site.checkIn}} · Check-out {{site.checkOut}}<small style="font-weight:400;color:var(--ink-3)">Flexible where our cleaning schedule allows</small></span></li>
+        </ul>
+
+        <div class="btn-row" style="margin-top:28px">
+          <a class="btn btn--wa" href="{{site.whatsapp}}" target="_blank" rel="noopener">Message on WhatsApp</a>
+          <a class="btn btn--outline" href="tel:{{site.phoneRaw}}">Call us</a>
+        </div>
+      </div>
+
+      <div class="card" style="padding:clamp(24px,3.5vw,38px)">
+        <h2 style="font-size:clamp(1.5rem,3vw,1.9rem)">Send an inquiry</h2>
+        <p style="margin-bottom:22px;color:var(--ink-3);font-size:.95rem">Tell us your dates and how many guests, and we'll come back to you with availability and the exact price.</p>
+
+        <form class="form" id="inquiry" action="/api/contact.php" method="post" novalidate>
+          <div class="form__row form__row--2">
+            <div class="field">
+              <label for="f-name">Name <span class="req">*</span></label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="f-email">Email <span class="req">*</span></label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required>
+            </div>
+          </div>
+          <div class="form__row form__row--2">
+            <div class="field">
+              <label for="f-arrive">Arrival</label>
+              <input id="f-arrive" name="arrival" type="date">
+            </div>
+            <div class="field">
+              <label for="f-depart">Departure</label>
+              <input id="f-depart" name="departure" type="date">
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-guests">Guests</label>
+            <select id="f-guests" name="guests">
+              <option value="">Select…</option>
+              <option>1</option><option>2</option><option>3</option>
+              <option>4</option><option>5</option><option>6</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-msg">Message <span class="req">*</span></label>
+            <textarea id="f-msg" name="message" required placeholder="Questions about the house, the area, or your arrival?"></textarea>
+          </div>
+
+          <div class="form__hp" aria-hidden="true">
+            <label for="f-website">Leave this field empty</label>
+            <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <p class="form__msg" data-form-msg role="status"></p>
+
+          <button class="btn btn--primary" type="submit" style="justify-self:start">Send inquiry</button>
+          <p class="form__note">We use your details only to answer your inquiry. See our <a href="/privacy-policy/">privacy policy</a>.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight section--sand">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Before you write</span>
+      <h2>Quick booking questions</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>How quickly do you reply?</summary>
+        <div class="faq__a">We monitor inquiries daily and aim to answer all emails and WhatsApp messages within a few hours.</div>
+      </details>
+      <details>
+        <summary>Can I book directly?</summary>
+        <div class="faq__a">Yes. When you contact us directly through this page you avoid the service fees charged by the major booking platforms, and you get the lowest available rate.</div>
+      </details>
+      <details>
+        <summary>What are the check-in and check-out times?</summary>
+        <div class="faq__a">Standard check-in is from {{site.checkIn}} and check-out is by {{site.checkOut}}. If you need special arrangements for your arrival in Zablaće, mention it in your message and we will do our best to accommodate your schedule.</div>
+      </details>
+      <details>
+        <summary>Can you help with an airport transfer?</summary>
+        <div class="faq__a">Yes. If you have already booked and need help getting to House Leila, we can arrange your transfer with our family partner, TAXI Antonio.</div>
+      </details>
+    </div>
+    <p class="center" style="margin-top:26px">You might also find your answer on the <a href="/faq/">FAQ page</a>.</p>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Where to find us</span>
+      <h2>{{site.address.full}}</h2>
+    </div>
+    <div class="map-frame">
+      <iframe
+        title="Map showing House Leila in Zablaće, Šibenik"
+        src="{{site.mapEmbed}}"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+</section>

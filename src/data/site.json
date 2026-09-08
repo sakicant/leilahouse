@@ -1,0 +1,94 @@
+{
+  "name": "House Leila",
+  "origin": "https://leilasibenik.com",
+  "description": "House Leila is a private 3-bedroom holiday home for up to 6 guests in Zablaće near Šibenik, 100 m from the Adriatic Sea, with a Mediterranean garden, stone BBQ and free private parking.",
+  "phone": "+385 98 185 68 85",
+  "phoneRaw": "+385981856885",
+  "email": "info@leilasibenik.com",
+  "whatsapp": "https://wa.me/385981856885",
+  "address": {
+    "street": "Grgasova 23c",
+    "locality": "Zablaće, Šibenik",
+    "postalCode": "22000",
+    "full": "Grgasova 23c, Zablaće, 22000 Šibenik, Croatia"
+  },
+  "geo": { "lat": 43.7075343, "lng": 15.8664631 },
+  "mapEmbed": "https://www.google.com/maps?q=43.7075343,15.8664631&hl=en&z=15&output=embed",
+  "mapLink": "https://www.google.com/maps/search/?api=1&query=43.7075343,15.8664631",
+  "languages": "English, Croatian",
+  "checkIn": "15:00",
+  "checkOut": "10:00",
+  "hosts": "Hrvojka & Tomislav",
+  "reviewsWidget": "https://cdn.trustindex.io/loader.js?1fe56747758509574e16340c79d",
+  "nav": [
+    { "url": "/", "label": "Home" },
+    { "url": "/gallery/", "label": "Gallery" },
+    { "url": "/amenities/", "label": "Amenities" },
+    { "url": "/location/", "label": "Things to do" },
+    { "url": "/faq/", "label": "FAQ" },
+    { "url": "/hosts/", "label": "Your hosts" },
+    { "url": "/contact/", "label": "Contact" }
+  ],
+  "amenityFeatures": [
+    "Air conditioning",
+    "Free WiFi",
+    "Free private parking",
+    "Full kitchen",
+    "Dishwasher",
+    "Washing machine",
+    "Private garden",
+    "BBQ grill",
+    "Outdoor shower",
+    "Smart TV",
+    "2 bathrooms"
+  ],
+  "faq": [
+    {
+      "title": "General information",
+      "items": [
+        {
+          "q": "How far is House Leila from the beach and the city center?",
+          "a": "House Leila is located just 100 meters from the nearest beach in the peaceful coastal village of Zablaće. Furthermore, the historic Šibenik city center is only a quick 7-kilometer drive away. As a result, this location gives you the perfect balance of a quiet seaside retreat and easy access to city attractions."
+        },
+        {
+          "q": "How many guests can stay, and is there free parking?",
+          "a": "The property comfortably accommodates up to 6 guests. Specifically, the house features 85 square meters of living space spread across two floors, including 3 bedrooms and 2 full bathrooms. Additionally, we provide one secure, free private parking spot directly on the property for all our guests. Moreover, if you have an extra vehicle, there are additional free public parking spots available just 50 meters away."
+        },
+        {
+          "q": "What makes this the best house for rent Šibenik has to offer for families?",
+          "a": "Families love our private outdoor oasis, which includes a fenced Mediterranean garden, a shaded terrace, a stone BBQ, and a refreshing outdoor shower. Most importantly, we never charge hidden “extra guest” fees for families of up to six."
+        },
+        {
+          "q": "Are there restaurants and attractions near the house?",
+          "a": "Yes, Zablaće has local markets and authentic Dalmatian restaurants within a 150-meter walk. Furthermore, you are just a few minutes away from the premium Amadria Park beaches and Aquapark Dalmatia. Consequently, House Leila serves as an incredibly convenient base for your entire holiday."
+        }
+      ]
+    },
+    {
+      "title": "Booking, cancellation & payment",
+      "items": [
+        {
+          "q": "Is it cheaper to book House Leila directly on this website?",
+          "a": "Yes, absolutely. Booking your stay directly through our website guarantees the lowest available rate. Because you are booking direct, you completely avoid hidden service commissions charged by third-party platforms. Additionally, you get direct communication with your host, Hrvojka."
+        },
+        {
+          "q": "What is your cancellation and refund policy?",
+          "a": "We understand that plans can change. Therefore, when you book directly with us, you can cancel your reservation for a full refund up to 30 days before your scheduled check-in date."
+        },
+        {
+          "q": "Are there any extra fees for cleaning or utilities?",
+          "a": "No, because we believe in 100% transparent pricing. Specifically, the rate you see when booking direct includes all utilities, air conditioning, Wi-Fi, and final end-of-stay cleaning. As a result, there are absolutely no hidden fees."
+        }
+      ]
+    },
+    {
+      "title": "Check-in & check-out",
+      "items": [
+        {
+          "q": "What time is check-in and check-out?",
+          "a": "Standard check-in is from 15:00, and check-out is by 10:00. However, if you need a slightly earlier arrival or a later departure, please let us know in advance. Consequently, we will do our best to accommodate your request based on our cleaning schedule."
+        }
+      ]
+    }
+  ]
+}

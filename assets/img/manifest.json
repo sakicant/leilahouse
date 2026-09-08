@@ -1,0 +1,468 @@
+{
+ "aquapark-dalmatia": {
+  "w": 1200,
+  "h": 799,
+  "variants": [
+   480,
+   800
+  ]
+ },
+ "house-leila-aerial-2": {
+  "w": 1920,
+  "h": 1438,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-aerial": {
+  "w": 1920,
+  "h": 1438,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-terrace-lounge": {
+  "w": 1215,
+  "h": 810,
+  "variants": [
+   480,
+   800
+  ]
+ },
+ "krka-waterfalls-evening": {
+  "w": 1920,
+  "h": 1440,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "krka-waterfalls": {
+  "w": 1920,
+  "h": 1440,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "zablace-coast-aerial": {
+  "w": 1920,
+  "h": 1438,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "zablace-panorama": {
+  "w": 1920,
+  "h": 586,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-back-door-kitchen": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-bathroom-shower": {
+  "w": 1920,
+  "h": 2880,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-bathroom-sink-mirror": {
+  "w": 1920,
+  "h": 2880,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-bathroom-sink-shower": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-bed-bedroom": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-bedroom-2": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-bedroom-bed-window": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-bedroom-bed": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-bedroom-double-bed-2": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-bedroom-double-bed": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-bedroom-element-closet": {
+  "w": 1920,
+  "h": 2881,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-bedroom-full-1": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-bedroom-mirror-detail": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-bedroom-mirror-details-2": {
+  "w": 1920,
+  "h": 2880,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-bedroom": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-couch-garden": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-evening-couch-garden": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-front-door-couch-evening": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-front-garden-couch": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-garden-full": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-garden-grill-table-backdoor-to-kitchen": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-garden": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-grill-garden-table": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-grill-table": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-kitchen-and-living-room": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-kitchen-counter-windows": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-kitchen-details-guest-book": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-kitchen-sink-windows": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-kitchen-sink": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-kitchen-stove": {
+  "w": 1920,
+  "h": 1053,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-kitchen-table-2": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-kitchen-table": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-kitchen": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-living-room-couch-tv": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-living-room-couch": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-outside-garden-grill-table-dinner": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-outside-grill-garden-table-dinner": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-stairs-kitchen-table": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ },
+ "house-leila-stairs": {
+  "w": 1920,
+  "h": 1280,
+  "variants": [
+   480,
+   800,
+   1280,
+   1920
+  ]
+ }
+}

@@ -1,0 +1,124 @@
+<!--meta {
+  "url": "/book-now/",
+  "title": "Book House Leila | Availability & Rates in Zablaće, Šibenik",
+  "description": "Check availability and seasonal rates for House Leila in Zablaće near Šibenik, and book directly with your hosts — the lowest rate, no platform fees, free cancellation up to 30 days before check-in.",
+  "ogImage": "house-leila-aerial",
+  "h1": "Book House Leila directly",
+  "crumb": "Book now"
+} -->
+
+<section class="pagehead">
+  <div class="pagehead__media">
+    <x-img src="house-leila-aerial" alt="House Leila seen from above in Zablaće near Šibenik" sizes="100vw" priority />
+  </div>
+  <div class="wrap pagehead__inner">
+    <span class="eyebrow">Book now</span>
+    <h1>Book House Leila directly</h1>
+    <p>By booking directly with us you get the best possible rate, with no hidden service fees or platform commissions. Check availability below and secure your stay in Zablaće.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Availability</span>
+      <h2>Availability calendar</h2>
+      <p>Find your ideal dates below. Green dates are available; crossed-out dates are already booked.</p>
+    </div>
+
+    <div class="cal-shell">
+      <div class="cal-bar">
+        <button class="cal-nav" type="button" data-cal-prev aria-label="Previous months"><x-icon name="arrow-right" /></button>
+        <strong class="cal-range" data-cal-range>Loading…</strong>
+        <button class="cal-nav" type="button" data-cal-next aria-label="Next months"><x-icon name="arrow-right" /></button>
+      </div>
+      <div class="cal-months" data-cal-months></div>
+      <div class="cal-legend">
+        <span><i style="background:#eef7f0;box-shadow:inset 0 0 0 1px #c9e2d2"></i> Available</span>
+        <span><i style="background:var(--sand-2);box-shadow:inset 0 0 0 1px var(--line)"></i> Booked</span>
+        <span><i style="background:#fff;box-shadow:inset 0 0 0 2px var(--accent)"></i> Today</span>
+      </div>
+      <p class="cal-note" data-cal-updated></p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--sand">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Pricing</span>
+      <h2>Our seasonal rates</h2>
+      <p>Pricing is based on the season, and always includes utilities, air conditioning, Wi-Fi and end-of-stay cleaning. Please note the minimum stay for each period.</p>
+    </div>
+    <div class="rates">
+      <div class="rate">
+        <h3>Pre-season</h3>
+        <p class="rate__dates">1 June – 30 June</p>
+        <p class="rate__price">200 €<span> / night</span></p>
+        <p class="rate__min">Minimum 5 nights</p>
+      </div>
+      <div class="rate rate--peak">
+        <span class="rate__tag">High season</span>
+        <h3>High season</h3>
+        <p class="rate__dates">1 July – 31 August</p>
+        <p class="rate__price">415 €<span> / night</span></p>
+        <p class="rate__min">Minimum 7 nights</p>
+      </div>
+      <div class="rate">
+        <h3>End-season</h3>
+        <p class="rate__dates">1 – 19 September</p>
+        <p class="rate__price">250 €<span> / night</span></p>
+        <p class="rate__min">Minimum 5 nights</p>
+      </div>
+      <div class="rate">
+        <h3>Off-season</h3>
+        <p class="rate__dates">20 September – 31 May</p>
+        <p class="rate__price">130 €<span> / night</span></p>
+        <p class="rate__min">Minimum 3 nights</p>
+      </div>
+    </div>
+    <p class="center" style="margin-top:26px;color:var(--ink-3);font-size:.92rem">
+      All rates are for the whole house, up to 6 guests — we never charge extra-guest fees.
+      Free cancellation up to 30 days before check-in.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Three steps</span>
+      <h2>How to secure your booking</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h3>Check your dates</h3>
+        <p>Use the calendar above to make sure your desired dates are free.</p>
+      </div>
+      <div class="step">
+        <h3>Send us a message</h3>
+        <p>Reach out on WhatsApp or through the inquiry form with your dates and the number of guests.</p>
+      </div>
+      <div class="step">
+        <h3>Confirm and pack</h3>
+        <p>{{site.hosts}} will reply quickly to confirm the details and send secure payment instructions to lock in your reservation.</p>
+      </div>
+    </div>
+    <div class="btn-row btn-row--center" style="margin-top:40px">
+      <a class="btn btn--wa" href="{{site.whatsapp}}" target="_blank" rel="noopener">WhatsApp {{site.phone}}</a>
+      <a class="btn btn--primary" href="/contact/">Send an inquiry</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight section--sand">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Good to know</span>
+      <h2>Booking questions</h2>
+    </div>
+    <div class="faq">
+      <x-faq group="1" groups="false" />
+    </div>
+  </div>
+</section>

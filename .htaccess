@@ -1,0 +1,69 @@
+# House Leila — static site on LiteSpeed/Apache
+# Replaces the WordPress install. Upload to the web root.
+
+# ---------------------------------------------------------------- redirects
+RewriteEngine On
+
+# Canonical host + HTTPS
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\.leilasibenik\.com$ [NC]
+RewriteRule ^(.*)$ https://leilasibenik.com/$1 [R=301,L]
+
+# Old WordPress paths that no longer exist
+RedirectMatch 301 ^/(wp-admin|wp-login\.php|xmlrpc\.php|wp-json)(/.*)?$ /
+RedirectMatch 301 ^/(feed|comments/feed)/?$ /
+RedirectMatch 301 ^/hosts$ /hosts/
+
+# Serve pretty URLs from directory index files
+DirectoryIndex index.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}/index.html -f
+RewriteRule ^(.*)$ /$1/index.html [L]
+
+ErrorDocument 404 /404.html
+
+# ---------------------------------------------------------------- caching
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                          "access plus 1 month"
+  # Fingerprint-free HTML and data must always revalidate.
+  ExpiresByType text/html                 "access plus 0 seconds"
+  ExpiresByType application/json          "access plus 5 minutes"
+  ExpiresByType text/css                  "access plus 1 week"
+  ExpiresByType text/javascript           "access plus 1 week"
+  ExpiresByType image/webp                "access plus 1 year"
+  ExpiresByType image/jpeg                "access plus 1 year"
+  ExpiresByType image/svg+xml             "access plus 1 year"
+  ExpiresByType font/woff2                "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(webp|jpe?g|png|svg|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "availability\.json$">
+    Header set Cache-Control "public, max-age=300"
+  </FilesMatch>
+
+  # Security headers
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+</IfModule>
+
+# ---------------------------------------------------------------- compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml application/xml
+</IfModule>
+
+# ---------------------------------------------------------------- hardening
+# Never serve the build sources, the failed-mail log, or dotfiles.
+RedirectMatch 404 ^/(src|tools|node_modules)(/.*)?$
+<FilesMatch "^(package\.json|inquiries-failed\.log|\.[^.]*)$">
+  Require all denied
+</FilesMatch>

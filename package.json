@@ -1,0 +1,11 @@
+{
+  "name": "leilasibenik",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static website for House Leila, a holiday home in Zablace near Sibenik, Croatia.",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "images": "python tools/gen-images.py",
+    "serve": "node tools/serve.mjs"
+  }
+}

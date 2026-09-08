@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la \"/c/Users/sakic/Desktop/slike za leilasibenikcom/webp\" 2>/dev/null | head -100)"
+    ]
+  }
+}
