@@ -12,3 +12,8 @@ _preview.html
 # Admin credentials: never commit these (this repository is public).
 api/config.php
 api/admin-attempts.log
+
+# The calendar admin panel ships in the upload zip, not through GitHub.
+# It holds no credentials, but there is no reason to publish its address.
+manage-*/
+dist/

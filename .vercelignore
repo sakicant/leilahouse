@@ -1,3 +1,8 @@
 # The preview host cannot run PHP; keep the handler out of it entirely so the
 # form falls back to WhatsApp/email instead of serving the source as a file.
 api/
+
+# The admin panel is not deployed anywhere public. It needs PHP, which
+# this host does not run, and it belongs on the live site only.
+manage-*/
+dist/

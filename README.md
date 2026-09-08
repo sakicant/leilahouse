@@ -150,6 +150,12 @@ git-ignored.
 `manage-t8orsq7hiw/.htaccess` also carries commented-out lines for HTTP basic
 auth if you want a second lock in front of the panel.
 
+### The panel is not in this repository
+
+The admin folder is git-ignored and ships only in the upload zip
+(`python tools/package.py`). It holds no credentials, but there is no reason to
+publish its address either. It stays on your machine and on the server.
+
 ### The panel's address
 
 The folder is named `manage-t8orsq7hiw` rather than `admin` so the usual
@@ -161,13 +167,13 @@ If you want an address that is genuinely private, rename the folder on the
 server to anything you like and do not commit that name. Everything inside it
 uses relative links, so a rename needs no other edit.
 
-### Seeing it without PHP (Vercel)
+### Seeing it without PHP
 
-Vercel does not run PHP, so `api/admin.php` is not there and nothing can be
-saved. Opening the panel on the preview deploy shows the sign-in with an
-explanation and a "Look around without saving" link, which loads the real
-calendar so you can judge the layout. A brown banner across the top says it is
-preview only.
+The panel is not deployed to Vercel at all, and Vercel could not run it anyway:
+it serves static files only, so `api/admin.php` would not exist and nothing
+could save. If you open the panel somewhere without PHP it says so and offers
+"Look around without saving", which loads the real calendar so the layout can
+be judged, with a banner across the top and Save disabled.
 
 To use it for real you need PHP, which means either the live LiteSpeed host or
 a local PHP server:
@@ -186,6 +192,18 @@ that are too short for the minimum stay or that cross a booked night. "Request
 these dates" carries the selection to the contact form, where it is re-priced
 from the same file (never trusted from the URL) and shown as a summary. The
 email that reaches you includes the exact quote the guest was looking at.
+
+## Building the upload bundle
+
+```bash
+python tools/package.py
+```
+
+Writes `dist/leilasibenik-site.zip`: the built pages, assets, the PHP handlers
+and the admin panel, with the folder structure the server expects. It leaves
+out the build sources, the repository plumbing, `api/config.php`, and the
+full-size photo originals, which the site never requests. The zip carries an
+UPLOAD-NOTES.txt covering the steps below.
 
 ## Deploying to the current host
 
